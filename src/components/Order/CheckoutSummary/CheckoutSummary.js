@@ -15,6 +15,6 @@ const checkoutSummary = (props) => {
             <Button btnType = "Success" clicked={props.checkoutContinued}>Continue</Button>
         </div>
      );
-}
+} 
 
 export default checkoutSummary;

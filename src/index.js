@@ -5,10 +5,19 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { legacy_createStore as createStore } from 'redux';
-import reducer from './Store/reducer';
+import { legacy_createStore as createStore , applyMiddleware, compose, combineReducers} from 'redux';
+import mainReducer from './Store/reducer';
+import authReducer from './Store/reducerauth';
+import thunk from 'redux-thunk';
 
-const store = createStore(reducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers ({
+     red: mainReducer,
+     redu: authReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
     <Provider store={store}>
