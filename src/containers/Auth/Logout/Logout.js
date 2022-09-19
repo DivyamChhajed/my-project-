@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import * as actions from '../../../Store/index';
-import {useNavigate} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 const logout = props => {
-    const Navigate = useNavigate(); 
     useEffect (() => {
+        console.log(props);
         props.onLogout();
     }, []) ;
 
-        return (Navigate('/auth')) ;
+        return <Navigate to = "/" /> ;
 }
 
 const mapDispatchToProps = dispatch => {

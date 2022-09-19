@@ -87,7 +87,8 @@ const contactData = props => {
         }
         axios.post('/orders.json',order)
         .then(response => {
-         Navigate('/'); })
+            alert("Your order is placed and our delivery boy contact you shortly!!");
+         Navigate('/burgerbuilder'); })
         .catch(error => console.log(error)); 
     }
    const checkValidity = (value, rules) => {

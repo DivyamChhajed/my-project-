@@ -13,7 +13,7 @@ const app = props => {
   //const navigate = useNavigate();
   let routes = (
     <Routes>
-       <Route path="/auth" element={<Auth />} />
+       <Route path="/" exact element={<Auth />} />
     </Routes>
   );
   if (props.isAuthenticated) {
@@ -22,7 +22,7 @@ const app = props => {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/orders" Component={Orders} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/" exact element={<BurgerBuilder />} />  
+            <Route path="/burgerbuilder" element={<BurgerBuilder />} />  
             <Route path="/contactdata" element={<ContactData/>} />
       </Routes>
     );

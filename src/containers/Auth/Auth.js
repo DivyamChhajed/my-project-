@@ -4,10 +4,9 @@ import Button from '../../components/UI/Button/Button';
 import classes from './Auth.css';
 import {auth} from '../../Store/index';
 import {connect} from 'react-redux';
-import {useNavigate} from 'react-router-dom'; 
+import {Navigate} from 'react-router-dom'; 
 
 const authh = props => {
-    const navigate = useNavigate();
     const [authForm, setAuthForm] = useState ({
             email: {
                 elementType: 'input',
@@ -68,12 +67,8 @@ const authh = props => {
     }
 
     const submitHandler = (event) => {
-        let authRedirect = null;
         event.preventDefault();
-        props.onAuth(authForm.email.value, authForm.password.value, isSignup);
-        if (props.isAuthenticated) {
-            authRedirect = navigate('/')
-       }
+        props.onAuth(authForm.email.value, authForm.password.value, isSignup);   
     }
 
     const switchAuthModeHandler = () => {
@@ -99,13 +94,14 @@ const authh = props => {
                      changed={(event) => inputChangedHandler(event, formElement.id)}
                     />
         ));
-        //let authRedirect = null;
-       // if (props.isAuthenticated) {
-         //    authRedirect = navigate('/')
+        let authRedirect = null;
+        if (props.isAuthenticated) {
+          authRedirect = <Navigate to = "/burgerbuilder" />
+        }
 
         return (
             <div className={classes.Auth}>
-                <form onSubmit = {submitHandler}>
+                <form onSubmit = {submitHandler} >
                     {form}
                     <Button btnType = "Success">Submit</Button>
                 </form>
