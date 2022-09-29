@@ -22,11 +22,11 @@ const contactData = props => {
                 valid: false,
                 touched: false
             },
-            street:  {
+            Address:  {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Street'
+                    placeholder: 'Your Address'
                 },
                 value: '',
                 validation: {
@@ -35,15 +35,17 @@ const contactData = props => {
                 valid: false,
                 touched: false
             },
-            country:  {
+            Number:  {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Country'
+                    placeholder: 'Mobile Number'
                 },
                 value: '',
                 validation: {
-                     required: true
+                     required: true,
+                     minLength: 10,
+                     maxLength: 10
                 },
                 valid: false,
                 touched: false
@@ -88,7 +90,7 @@ const contactData = props => {
         axios.post('/orders.json',order)
         .then(response => {
             alert("Your order is placed and our delivery boy contact you shortly!!");
-         Navigate('/burgerbuilder'); })
+         Navigate('/myburger'); })
         .catch(error => console.log(error)); 
     }
    const checkValidity = (value, rules) => {

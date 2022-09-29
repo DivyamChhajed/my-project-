@@ -68,7 +68,9 @@ const authh = props => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        props.onAuth(authForm.email.value, authForm.password.value, isSignup);   
+        props.onAuth(authForm.email.value, authForm.password.value, isSignup);
+        console.log(event);
+           <Navigate to="/myburger" /> ;
     }
 
     const switchAuthModeHandler = () => {
@@ -94,14 +96,15 @@ const authh = props => {
                      changed={(event) => inputChangedHandler(event, formElement.id)}
                     />
         ));
-        let authRedirect = null;
+      /*  let authRedirect = useNavigate();
         if (props.isAuthenticated) {
-          authRedirect = <Navigate to = "/burgerbuilder" />
-        }
+          authRedirect ('/burgerbuilder')
+          console.log(authRedirect)
+        } */
 
         return (
             <div className={classes.Auth}>
-                <form onSubmit = {submitHandler} >
+                <form onSubmit = {submitHandler}>
                     {form}
                     <Button btnType = "Success">Submit</Button>
                 </form>

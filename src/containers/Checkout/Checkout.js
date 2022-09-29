@@ -1,18 +1,14 @@
 import React from 'react';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-//import {Route} from 'react-router-dom';
-//import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
 const checkout = props => {
    const navigate = useNavigate();
    const checkoutCancelledHandler = () => {
-       // props.history.goBack();
-       navigate('/');
+       navigate('/myburger');
     }
    const checkoutContinuedHandler = () => {
-       // props.history.replace('/checkout/contact-data');
        navigate('/contactdata');
     }
         return(

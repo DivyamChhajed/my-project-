@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Aux from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-//import axios from '../../axios-orders';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../Store/actions';
 
-const burgerBuilder = (props) => {
+const myBurger = (props) => {
    const navigate = useNavigate();        
    const [purchasing, setPurchasing] = useState(false);
 
@@ -43,7 +41,7 @@ const burgerBuilder = (props) => {
             disabledInfo[key] = disabledInfo[key] <= 0 
         }
         return(
-             <Aux>
+             <Fragment>
                 <Modal show={purchasing} modalClosed = {purchaseCancelHandler}>
                     <OrderSummary  ingredients = {props.ings}
                     price={props.price}
@@ -58,8 +56,7 @@ const burgerBuilder = (props) => {
                 purchasable = {updatePurchaseState(props.ings)}
                 ordered={purchaseHandler}
                 price = {props.price} />
-                 
-             </Aux>
+             </Fragment>
         );
 };
 
@@ -77,4 +74,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(burgerBuilder);
+export default connect(mapStateToProps, mapDispatchToProps)(myBurger);
