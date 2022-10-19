@@ -4,7 +4,7 @@ import Button from '../../components/UI/Button/Button';
 import classes from './Auth.css';
 import {auth} from '../../Store/index';
 import {connect} from 'react-redux';
-import {Navigate} from 'react-router-dom'; 
+import {useNavigate} from 'react-router-dom'; 
 
 const authh = props => {
     const [authForm, setAuthForm] = useState ({
@@ -69,8 +69,7 @@ const authh = props => {
     const submitHandler = (event) => {
         event.preventDefault();
         props.onAuth(authForm.email.value, authForm.password.value, isSignup);
-        console.log(event);
-           <Navigate to="/myburger" /> ;
+           
     }
 
     const switchAuthModeHandler = () => {
@@ -96,14 +95,14 @@ const authh = props => {
                      changed={(event) => inputChangedHandler(event, formElement.id)}
                     />
         ));
-      /*  let authRedirect = useNavigate();
+        let authRedirect = useNavigate();
         if (props.isAuthenticated) {
-          authRedirect ('/burgerbuilder')
-          console.log(authRedirect)
-        } */
+          authRedirect ('/myburger')
+        } 
 
         return (
             <div className={classes.Auth}>
+                {authRedirect}
                 <form onSubmit = {submitHandler}>
                     {form}
                     <Button btnType = "Success">Submit</Button>
