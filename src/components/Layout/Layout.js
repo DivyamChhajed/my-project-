@@ -1,6 +1,5 @@
 import React, {useState, Fragment} from 'react';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
-import SideDrawer from '../Navigation/SideDrawer/Sidedrawer';
 import classes from './Layout.css';
 import {connect} from 'react-redux';
 
